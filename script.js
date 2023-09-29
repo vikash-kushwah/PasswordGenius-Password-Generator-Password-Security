@@ -84,4 +84,3 @@ button.addEventListener("click", (e) => {
     document.getElementById("PasswordResult").select()
   );
 });
-
