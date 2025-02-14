@@ -1,0 +1,387 @@
+:root {
+    --primary-color: #2196f3;
+    --secondary-color: #144272;
+    --accent-color: #ffd700;
+    --background: #ffffff;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --background: #1a1a1a;
+    --text-color: #ffffff;
+    --card-bg: #333333;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+/* Header Styles */
+.main-nav {
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Importance Page Styles */
+
+/* Hero Section Improvements */
+.hero {
+    background: linear-gradient(135deg, rgba(20, 66, 114, 0.9), rgba(33, 150, 243, 0.8)),
+                url('../assets/images/cyber-security-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    animation: slideInDown 0.8s ease-out;
+}
+
+.hero .subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards 0.3s;
+}
+
+/* Statistics Section Improvements */
+.statistics {
+    padding: 5rem 2rem;
+    background: var(--background);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding: 0 1rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.stat-card h3 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Threats Section Improvements */
+.threats {
+    padding: 5rem 2rem;
+    background: var(--card-bg);
+}
+
+.threats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin: 3rem 0;
+}
+
+.threat-card {
+    background: var(--background);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.threat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.threat-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.threat-card i {
+    font-size: 1.6rem;
+}
+
+.protection-tip {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(20, 66, 114, 0.1));
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Impact Section Improvements */
+.impact-section {
+    padding: 5rem 2rem;
+    background: var(--secondary-color);
+    color: white;
+}
+
+.impact-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.impact-business, .impact-personal {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.impact-business h3, .impact-personal h3 {
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.impact-business ul, .impact-personal ul {
+    list-style: none;
+}
+
+.impact-business li, .impact-personal li {
+    padding: 0.8rem 0;
+    padding-left: 1.8rem;
+    position: relative;
+}
+
+.impact-business li::before, .impact-personal li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Animations */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Best Practices Section */
+.best-practices {
+    background: var(--secondary-color);
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.practices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.practice-card {
+    text-align: center;
+    padding: 2rem;
+}
+
+.practice-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+/* Footer Styles */
+footer {
+    background: var(--secondary-color);
+    color: white;
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .statistics, .threats, .impact-section {
+        padding: 3rem 1rem;
+    }
+
+    .stat-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .stat-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .threat-card {
+        padding: 1.8rem;
+    }
+
+    .impact-content {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .stat-icon i {
+        font-size: 1.5rem;
+    }
+
+    .threat-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .impact-business, .impact-personal {
+        padding: 1.5rem;
+    }
+}

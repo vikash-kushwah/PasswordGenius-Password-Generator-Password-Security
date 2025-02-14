@@ -1,0 +1,395 @@
+:root {
+    /* Core Colors */
+    --primary-color: #2196f3;
+    --secondary-color: #144272;
+    --accent-color: #ffd700;
+    --background: #ffffff;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --success-color: #4CAF50;
+    --warning-color: #ff9800;
+    --danger-color: #f44336;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    /* Additional Variables */
+    --card-radius: 12px;
+    --transition-speed: 0.3s;
+    --hero-overlay: rgba(0,0,0,0.7);
+}
+
+[data-theme="dark"] {
+    --background: #1a1a1a;
+    --text-color: #ffffff;
+    --card-bg: #333333;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --hero-overlay: rgba(0,0,0,0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed),
+                color var(--transition-speed);
+}
+
+/* Header Styles */
+.main-nav {
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Hero Section */
+.hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
+                url('../assets/images/protection-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    padding: clamp(3rem, 10vh, 6rem) 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 0.8s ease-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero .subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards 0.3s;
+}
+
+/* Enhanced Tips Section */
+.tips-section {
+    padding: clamp(3rem, 8vh, 5rem) 2rem;
+    background: linear-gradient(135deg, 
+                rgba(33, 150, 243, 0.1), 
+                rgba(20, 66, 114, 0.1));
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    margin-top: 2rem;
+    padding: 0.5rem;
+}
+
+.tip-card {
+    background: var(--card-bg);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-speed),
+                box-shadow var(--transition-speed);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tip-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.tip-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform var(--transition-speed);
+}
+
+.tip-card:hover i {
+    transform: scale(1.1);
+}
+
+.tip-card ul {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.tip-card ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tip-card ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* Enhanced Password Checker */
+.password-checker {
+    background: linear-gradient(45deg, 
+                var(--card-bg), 
+                rgba(33, 150, 243, 0.05));
+    padding: clamp(2rem, 6vh, 4rem) 2rem;
+    margin: 2rem 0;
+}
+
+.checker-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#password-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: var(--background);
+    color: var(--text-color);
+    transition: border-color var(--transition-speed),
+                box-shadow var(--transition-speed);
+}
+
+#password-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.strength-meter {
+    margin: 1.5rem 0;
+}
+
+.meter-bar {
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.meter-bar::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: var(--strength-width, 0%);
+    background-color: var(--strength-color, var(--primary-color));
+    transition: all 0.3s ease;
+}
+
+/* Requirements List */
+.requirements {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.requirements ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.requirements li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.requirements li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: var(--danger-color, #f44336);
+}
+
+.requirements li.met::before {
+    content: '✓';
+    color: var(--success-color, #4CAF50);
+}
+
+.requirements li.met {
+    opacity: 1;
+}
+
+/* Security Tools Section */
+.security-tools {
+    padding: 4rem 2rem;
+    background: var(--secondary-color);
+    color: white;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .checker-container {
+        padding: 1rem;
+    }
+
+    .tips-grid,
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tip-card {
+        padding: 1.5rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .tips-grid {
+        gap: 1rem;
+    }
+
+    .tip-card i {
+        font-size: 2rem;
+    }
+
+    #password-input {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .requirements li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .tip-card:hover {
+        transform: none;
+    }
+
+    .tip-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hero {
+        background: none;
+        color: black;
+    }
+
+    .tip-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .nav-links,
+    .theme-switch-wrapper {
+        display: none;
+    }
+}

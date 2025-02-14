@@ -1,5 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
+/* Add these variables at the top */
+:root {
+  --primary-color: #2196f3;
+  --secondary-color: #144272;
+  --accent-color: #ffd700;
+  --background: #ffffff;
+  --text-color: #333333;
+  --card-bg: #ffffff;
+  --success-color: #4CAF50;
+  --warning-color: #ff9800;
+  --danger-color: #f44336;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 [data-theme="light"] {
   --bg-color: #eef0f4;
   --color: #333;
@@ -25,6 +39,13 @@
     drop-shadow(4px 4px 6px #13111178);
   --filter3: drop-shadow(-2px -2px 3px #16151508)
     drop-shadow(2px 2px 3px #13111178);
+  --background: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #444444;
+  --primary-color: #64B5F6;
+  --secondary-color: #90CAF9;
+  --card-bg: #333333;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -33,10 +54,19 @@
   padding: 0;
 }
 
+/* Update existing body styles */
 body {
-  background-color: var(--bg-color);
-  color: var(--color);
-  font-family: "Muli", sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: "Segoe UI", sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  padding-bottom: 160px; /* Adjust this value based on your footer height */
 }
 
 p {
@@ -60,9 +90,16 @@ input[type="checkbox"] {
   border: 12px solid var(--bg-color);
   filter: var(--filter1);
   margin: auto;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
 }
 
 .result-container {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
   background-color: var(--bg-color);
   border: 12px solid var(--bg-color);
   filter: var(--filter2);
@@ -96,8 +133,67 @@ textarea {
   width: 40px;
 }
 
+#PasswordResult {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  resize: none;
+}
+
+.password-strength {
+  margin-top: 10px;
+}
+
+.strength-bar {
+  height: 5px;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.strength-text {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+  border-bottom-color: var(--primary-color);
+}
+
+.settings {
+  margin-bottom: 1rem;
+}
+
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin: 15px 0;
+}
+
 .buttons {
   display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .btn {
@@ -110,18 +206,162 @@ textarea {
   margin: 14px 5px 7px 5px;
   background-color: var(--bg-color);
   filter: var(--filter2);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .btn:hover {
   filter: var(--filter3);
   transition: 0.3s ease-in-out;
+  background-color: var(--secondary-color);
 }
 
-.setting {
+/* Update modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--background);
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+close:hover {
+  color: var(--primary-color);
+}
+
+/* Add notification styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 4px;
+  color: white;
+  z-index: 1000;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.notification.success {
+  background-color: var(--success-color);
+}
+
+.notification.error {
+  background-color: var(--danger-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.password-history {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#historyList {
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.saved-passwords-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.saved-password-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 15px 0;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.site-info {
+  flex-grow: 1;
+}
+
+.site-info strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.password-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+.btn-small:hover {
+  background-color: var(--secondary-color);
+}
+
+.hidden-password {
+  font-family: monospace;
 }
 
 @media screen and (max-width: 400px) {
@@ -130,12 +370,70 @@ textarea {
   }
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Update footer styles */
 footer {
   background-color: #333;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: auto;
+  min-height: 120px; /* Adjust based on your content */
+}
+
+footer a {
+  color: rgb(0, 89, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: rgb(70, 131, 255);
+  text-decoration: underline;
+}
+
+/* Add responsive footer adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    padding-bottom: 200px; /* Increase padding for smaller screens */
+  }
+
+  footer {
+    padding: 15px;
+    font-size: 0.9em;
+  }
+
+  footer br {
+    display: block;
+    content: "";
+    margin: 8px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding-bottom: 240px; /* Further increase padding for mobile */
+  }
+
+  footer {
+    padding: 10px;
+    font-size: 0.8em;
+  }
 }
